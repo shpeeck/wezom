@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'frontend.apps.FrontendConfig',
     'backend.apps.BackendConfig',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,6 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+DATA_DIR = os.path.join(BASE_DIR, './backend/init_data')
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from backend.models import Category, Subcategory, Enterprises
+from backend.models import Category, Subcategory, Enterprises, StaticPage
 
 # Register your models here.
 class CategoryAdmin(admin.ModelAdmin):
@@ -16,3 +16,8 @@ class EnterprisesAdmin(admin.ModelAdmin):
     pass
 
 admin.site.register(Enterprises, EnterprisesAdmin)
+
+class StaticPageAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(StaticPage, StaticPageAdmin)

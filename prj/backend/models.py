@@ -56,4 +56,13 @@ class Enterprises(models.Model):
         verbose_name = 'Предприятие'
         verbose_name_plural = 'Предприятия'
 
+class StaticPage(models.Model):
+    title = models.CharField(max_length=250, default='')
+    content = models.TextField(default='')
 
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Страницы "О нас" и "Контакты"'
+        verbose_name_plural = 'Страницы "О нас" и "Контакты"'
