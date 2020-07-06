@@ -72,17 +72,35 @@ while True:
                                         company_name = company_name[1]
                                         company_name = company_name.strip('></')
                                         print('Название: ', company_name)
-                                        # city = re.findall(r'<h1 class="main-ttl"><span>.+', code)
-                                        # phone = re.findall(r'<h1 class="main-ttl"><span>.+', code)
-                                        # content = re.findall(r'<h1 class="main-ttl"><span>.+', code)
+                                        city = re.findall(r'<b>Город:</b>.+', code)
+                                        city = city[0].split('<')
+                                        city = city[2]
+                                        city = city.split('>')
+                                        city = city[1]
+                                        print('Город: ', city)
+                                        phone = re.findall(r'<b>Телефон</b> .+', code)
+                                        phone = phone[0].split('<b>Телефон</b> ')
+                                        phone = phone[1]
+                                        phone = phone.split('</')
+                                        phone = phone[0]
+                                        print('Телефоны: ', phone)
+                                        content = re.findall(r'<p>.+', code)
+                                        content = content[0]
+                                        content = content.split('p>')
+                                        content = content[1]
+                                        content = content.split('<')
+                                        content = content[0]
+                                        print('Контент', content)
                                         address = re.findall(r'Адрес:</b> .+', code)
                                         address = address[0].split('Адрес:</b> ')
                                         address = address[1]
                                         address = address.split('</')
                                         address = address[0]
                                         print('Адрес: ', address)
-
-                                        # image = re.findall(r'<h1 class="main-ttl"><span>.+', code)
+                                        image = re.findall(r'/admin/uploads/products/images/.+', code)
+                                        image = image[0]
+                                        image = f'{dom}{image}'
+                                        print('Изображение: ', image)
                                     except:
                                         print('laja')
 
