@@ -18,6 +18,8 @@
 </div>
 {% endblock %}
 
+
+
 {% block content %}
 
 
@@ -35,6 +37,23 @@
         </div>
     </div>
     {% endfor %}
-    </>
+</div>
 
-    {% endblock %}
+
+<div class="row"
+    style="padding-top: 20px; padding-bottom: 20px; padding-left: 35px; font-size: 15px; font-weight: bold; background-color: rgb(255, 255, 255);">
+    <span class="step-links">
+        {% if news.has_previous %}
+        <a href="?news={{news.previous_page_number}}">Назад</a>
+        {% endif %}
+        <span class="current">
+            Страница {{ news.number }} из {{ news.paginator.num_pages }}
+        </span>
+        {% if news.has_next %}
+        <a href="?page={{ news.next_page_number }}">Вперед</a>
+        {% endif %}
+    </span>
+</div>
+
+
+{% endblock %}
