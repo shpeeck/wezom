@@ -6,7 +6,7 @@
 
 {% block sidebur %}
 
-<div class="col-md-3">
+<div class="col-md-3 order-md-first order-last">
     <ul class="list-group">
         {% for item in cat %}
         <li class="list-group-item active">{{ item.name }}</li>
@@ -29,7 +29,7 @@
 
 <div class="row">
     {% for item in news %}
-    <div class="card col-md-1 col-lg-3 col-md-4 col-md-9 m-xl-0.5" style="width: 18rem;">
+    <div class="card col-md-6 col-lg-3 col-sm-6 col-xs-12 m-xl-0.5" style="width: 18rem;">
         <img src="{{ item.image }}" class="card-img-top" alt="..." height="auto">
         <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
