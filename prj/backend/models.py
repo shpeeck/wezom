@@ -33,9 +33,9 @@ class Enterprises(models.Model):
     name = models.CharField(max_length=250, default='')
     content = models.TextField(default='')
     image = models.ImageField(upload_to='images')
-    city = models.CharField(max_length=30, default='')
+    city = models.CharField(max_length=50, default='')
     address = models.CharField(max_length=250, default='')
-    phone = models.CharField(max_length=20, default='')
+    phone = models.CharField(max_length=100, default='')
     category = models.ForeignKey(
         Category, 
         on_delete=models.SET_NULL, 

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
-{% block title %}Главная страница{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{{ subcat.title }}
 
 {% block sidebur %}
 
@@ -19,6 +21,10 @@
 {% endblock %}
 
 {% block content %}
+<div>
+    <h3 style="color: #007bff;">{{ subctig }}</h3>
+    <p></p>
+</div>
 
 
 <div class="row">
