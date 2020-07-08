@@ -21,12 +21,16 @@
 
 
 {% block content %}
-
+{% load is_url %}
 
 <div class="row">
     {% for item in news %}
-    <div class="card col-md-6 col-lg-3 col-sm-6 col-xs-12 m-xl-0.5" style="width: 18rem;">
+    <div class="card mx-auto col-md-6 col-lg-3 col-sm-6 col-xs-12 m-xl-0.5" style="width: 18rem;">
+        {% if item.image|is_url %}
         <img src="{{ item.image }}" class="card-img-top" alt="..." height="auto">
+        {% else %}
+        <img src="/media/{{ item.image }}" class="card-img-top" alt="..." height="auto">
+        {% endif %}
         <div class="card-body">
             <h5 class="card-title">{{ item.name }}</h5>
             <!-- <p class="card-text">{{ item.content|safe|linebreaks|truncatechars:50 }}...</p> -->
