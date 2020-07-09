@@ -26,11 +26,19 @@ schema_view = get_schema_view(
     permission_classes=(permissions.AllowAny,),
 )
 # ebd drf_yasg
+from rest_framework import routers
+from backend.views import CategoryViewSet
+router = routers.DefaultRouter()
+router.register(r'category', CategoryViewSet)
 
 
 urlpatterns = [
     path('', include('backend.urls')),
     path('admin/', admin.site.urls),
+    path('v1/', include([
+        path('generic/', include(router.urls)),
+        path('backend', include('backend.urls'))
+    ])),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('doc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
 ]

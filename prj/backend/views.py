@@ -4,6 +4,60 @@ from .models import Enterprises, Category, Subcategory, StaticPage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
+from rest_framework import serializers
+from rest_framework import viewsets, mixins
+from rest_framework import permissions
+from rest_framework.decorators import action
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
+from drf_yasg.utils import swagger_auto_schema
+
+class CommonResponceSerializer(serializers.Serializer):
+    status = serializers.IntegerField()
+    message = serializers.CharField()
+
+class LoginRequestSerializer(serializers.Serializer):
+    username = serializers.CharField()
+    password = serializers.CharField()
+
+
+class AuthView(APIView):
+    """
+        User login.
+    """
+    @swagger_auto_schema(
+        request_body = LoginRequestSerializer,
+        responses= { 200:  CommonResponceSerializer}
+    )
+    def post(self, request):
+        return Response(CommonResponceSerializer({
+            'status': 0,
+            'message': 'Goooood'
+        }).data)
+
+
+from rest_framework.decorators import api_view
+
+@api_view()
+def hello(request):
+    return Response({"message": "hello"})
+
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Category
+        fields = ['id', 'name']
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    """
+        API endpoint that allows users to read and modify categories.
+    """
+    queryset = Category.objects.all().order_by('-id')
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.AllowAny]
+    http_method_names = ['get', 'post']
 
 
 def index(request):
